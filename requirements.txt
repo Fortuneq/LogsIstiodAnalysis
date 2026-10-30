@@ -1,0 +1,11 @@
+numpy==1.24.4
+matplotlib==3.7.1
+python-dateutil==2.8.2
+requests
+fastapi
+uvicorn
+scikit-learn
+prometheus_client
+pandas
+asyncpg
+psycopg2

@@ -1,0 +1,10 @@
+global:
+  scrape_interval: 15s # Сколько часто собирать метрики
+
+scrape_configs:
+  - job_name: "custom_python"
+    static_configs:
+      - targets: ["host.docker.internal:8000"]
+
+rule_files:
+  - "alert.rules.yml" # Путь к файлу с правилами алертов

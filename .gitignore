@@ -1,0 +1,9 @@
+venv/
+.venv/
+__pycache__/
+.idea/
+.DS_Store
+*.log
+logs/
+postgres_adapter/data/
+*feature_lines.txt

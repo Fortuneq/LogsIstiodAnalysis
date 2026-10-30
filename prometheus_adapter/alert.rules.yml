@@ -1,0 +1,11 @@
+groups:
+  - name: example
+    rules:
+      - alert: HighMetricValue
+        expr: my_metric > 0.5
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High chance of error detected!"
+          description: "Metric similarity is higher than expected threshold."
