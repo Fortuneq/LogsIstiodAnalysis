@@ -4,10 +4,35 @@ A prototype that watches **istiod** (Istio control plane) logs in near real time
 
 ## How it works
 
+```mermaid
+flowchart LR
+    IS[istiod pods] -->|logs| LK[(Grafana Loki)]
+    LK -->|"query_range every N s"| LR[LogReader]
+    LR --> PR["IstioLogParser<br/>binary + numerical features"]
+    PR --> AN["LogAnalyzer<br/>MinMax scaling<br/>cosine similarity"]
+    LIB[("Issue library<br/>resources/logs.csv")] --> AN
+    AN --> MS["ErrorMetricsServer<br/>Prometheus gauge :8000"]
+    MS --> PM[Prometheus]
+    PM -->|"rule: my_metric > 0.5"| AM[Alertmanager]
+    AM -->|webhook| RC["alert_receiver<br/>FastAPI /alerts"]
 ```
-Loki ──► LogReader ──► IstioLogParser ──► LogAnalyzer ──► Prometheus gauge ──► Alertmanager ──► alert receiver
-          (poll)        (features)         (similarity      (/metrics :8000)     (rule > 0.5)      (FastAPI webhook)
-                                            vs. library)
+
+```mermaid
+sequenceDiagram
+    participant M as LogProcessingManager
+    participant L as Loki
+    participant P as Parser
+    participant A as Analyzer
+    participant G as Prometheus gauge
+    loop every interval
+        M->>L: logs since last timestamp
+        L-->>M: new istiod lines
+        M->>P: extract features
+        P-->>M: feature vector
+        M->>A: compare with known issues
+        A-->>M: similarity score
+        M->>G: set(score)
+    end
 ```
 
 1. **LogReader** polls Loki (`query_range`) every few seconds for new istiod log lines.
