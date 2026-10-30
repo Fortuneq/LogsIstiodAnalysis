@@ -1,0 +1,69 @@
+.gitignore
+  s_c5582b25068b6c::t_e69cf6dff7c317 1-9
+Dockerfile
+  s_c5582b25068b6c::t_1c5add828631dd 1-7
+postgres_adapter/README.md
+  s_c5582b25068b6c::t_9103b750541d8a 1-7
+postgres_adapter/check_data.py
+  s_c5582b25068b6c::t_4105dd84b4316c 1-38
+postgres_adapter/client.py
+  s_c5582b25068b6c::t_61daec08799a26 1-46
+postgres_adapter/db_creator.py
+  s_c5582b25068b6c::t_0b3ed8fc3dfa2d 1-53
+postgres_adapter/docker-compose.yml
+  s_c5582b25068b6c::t_f7d23cb23c138b 1-12
+postgres_adapter/server.py
+  s_c5582b25068b6c::t_ce3dce6be4c894 1-67
+prometheus_adapter/alert.rules.yml
+  s_c5582b25068b6c::t_f07adc20566cb6 1-11
+prometheus_adapter/alert_receiver.py
+  s_c5582b25068b6c::t_4e9e932ed79746 1-17
+prometheus_adapter/alertmanager.yml
+  s_c5582b25068b6c::t_fa6193e9940ca9 1-7
+prometheus_adapter/docker-compose.yml
+  s_c5582b25068b6c::t_77d3d83346cfe6 1-24
+prometheus_adapter/prometheus.yml
+  s_c5582b25068b6c::t_4a76eacc1d6ac9 1-10
+requirements.txt
+  s_c5582b25068b6c::t_16afaf22bd3546 1-11
+resources/logs.csv
+  s_c5582b25068b6c::t_c765aef1c6b5b8 1-8
+src/analyzer.py
+  s_c5582b25068b6c::t_8c57581bd24852 1-56
+src/config.py
+  s_c5582b25068b6c::t_3b9ee9dbed07c6 1-2
+src/error_server.py
+  s_c5582b25068b6c::t_b6254e0e3eee1c 1-12
+src/features.py
+  s_c5582b25068b6c::t_c8ebfe4f5977d7 1-74
+src/log_reader.py
+  s_c5582b25068b6c::t_26896a0f7704f6 1-43
+src/logparser.py
+  s_c5582b25068b6c::t_e34ae423121fec 1-107
+src/main.py
+  s_c5582b25068b6c::t_77058f9d579faf 1-16
+src/manager.py
+  s_c5582b25068b6c::t_2388b63dcca8c2 1-51
+victoria_adapter/README.md
+  s_c5582b25068b6c::t_d54b9a71558fe0 1-9
+victoria_adapter/data_creator.py
+  s_c5582b25068b6c::t_d8aa58bf427af9 1-59
+victoria_adapter/reader.py
+  s_c5582b25068b6c::t_43b3a38ca10557 1-34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "947ffd0e6bb767755e5329824a01bbba61afbb00",
+  "prompts": {},
+  "sessions": {
+    "s_c5582b25068b6c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0d7da30a-75e4-48f3-95fe-7b0ba84e7910",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "vlad <Fortuneq@bwg-io.site>"
+    }
+  }
+}
