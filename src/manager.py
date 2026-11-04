@@ -7,7 +7,7 @@ from analyzer import LogAnalyzer
 from logparser import IstioLogParser
 from features import binary_features, numerical_features
 from error_server import ErrorMetricsServer
-from log_reader import LogReader  # Можно заменить на нужную БД
+from log_reader import LogReader  # Can be replaced with any DB
 
 
 class LogProcessingManager:
@@ -36,11 +36,11 @@ class LogProcessingManager:
         print("CHECKING...")
         logs = self.log_reader.get_logs()
         self.log_stream.extend(logs)
-        # Обработка новых данных
+        # Process new data
         sim = self.log_analyzer.check_issue(self.log_stream)
         self.error_metrics_server.update_metric(sim)
 
-        # Перезапуск таймера
+        # Restart the timer
         self.timer = threading.Timer(self.interval, self.process_new_logs)
         self.timer.start()
         print("END OF CHECKING...")

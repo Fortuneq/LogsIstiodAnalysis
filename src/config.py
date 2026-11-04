@@ -1,2 +1,2 @@
-# список IstioD
+# list IstioD
 # namespace, deployment

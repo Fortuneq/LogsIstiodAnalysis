@@ -1,23 +1,23 @@
 import psycopg2
 
-# Параметры подключения к вашему PostgreSQL серверу
-host = "localhost"  # имя сервиса в Docker Compose
+# Connection parameters for your PostgreSQL server
+host = "localhost"  # service name in Docker Compose
 user = "username"
 password = "password"
 db_name = "name"
 port = "5432"
 
-# Подключение к базе данных
+# Connect to the database
 try:
     conn = psycopg2.connect(
         host=host, port=port, user=user, password=password, database=db_name
     )
     conn.autocommit = True
 
-    # Создание курсора для выполнения операций с базой данных
+    # Create a cursor for database operations
     cursor = conn.cursor()
 
-    # Создание таблицы
+    # Create the table
     create_table_query = """
     CREATE TABLE IF NOT EXISTS issues (
         id SERIAL PRIMARY KEY,
@@ -27,9 +27,9 @@ try:
     );
     """
     cursor.execute(create_table_query)
-    print("Таблица успешно создана")
+    print("Table created successfully")
 
-    # Вставка тестовых данных
+    # Insert test data
     insert_query = """
     INSERT INTO issues (name_issue, reason_issue, description)
     VALUES (%s, %s, %s);
@@ -42,12 +42,12 @@ try:
 
     for record in data:
         cursor.execute(insert_query, record)
-    print("Данные успешно вставлены")
+    print("Data inserted successfully")
 
 except psycopg2.OperationalError as e:
-    print(f"Ошибка подключения: {e}")
+    print(f"Connection error: {e}")
 finally:
-    # Закрытие соединения с базой данных, если оно было установлено
+    # Close the database connection if it was established
     if "conn" in locals() and conn is not None:
         cursor.close()
         conn.close()

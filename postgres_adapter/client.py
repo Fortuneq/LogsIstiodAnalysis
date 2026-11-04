@@ -29,18 +29,18 @@ def download_feature_lines():
     if response.status_code == 200:
         with open("downloaded_feature_lines.txt", "wb") as file:
             file.write(response.content)
-        print("Файл успешно загружен.")
+        print("File uploaded successfully.")
         return True
     else:
-        print(f"Ошибка при загрузке файла: {response.status_code}")
+        print(f"File upload error: {response.status_code}")
         return False
 
 
-# Пример использования
+# Usage example
 print(
     add_issue(
         "Test Issue", "Test Reason", "This is a test description"
-    )  # Добавление нового инцидента
+    )  # Add a new incident
 )
-print(get_issue(1))  # Получение информации об инциденте с ID 1
-download_feature_lines()  # Загрузка файла feature_lines.txt
+print(get_issue(1))  # Get information about the incident with ID 1
+download_feature_lines()  # Upload the feature_lines.txt

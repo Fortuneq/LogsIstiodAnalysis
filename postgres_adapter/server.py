@@ -5,7 +5,7 @@ import asyncpg
 app = FastAPI()
 
 
-# Функция для подключения к базе данных
+# Function for connecting to the database
 async def get_db_connection():
     conn = await asyncpg.connect(
         user="username", password="password", database="name", host="127.0.0.1"
@@ -51,10 +51,10 @@ async def check_issue(issue_id: int):
 
 @app.post("/analyze_issue")
 async def analyze_issue():
-    # Путь к файлу, который необходимо отправить
+    # Path to the file to send
     file_path = "feature_lines.txt"
 
-    # Проверяем, существует ли файл
+    # Check whether the file exists
     try:
         return FileResponse(file_path, media_type="text/plain", filename=file_path)
     except Exception as e:

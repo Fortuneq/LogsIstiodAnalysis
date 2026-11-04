@@ -4,7 +4,7 @@ import psycopg2
 def fetch_all_data():
     connection = None
     try:
-        # Параметры подключения к вашему PostgreSQL серверу
+        # Connection parameters for your PostgreSQL server
         connection = psycopg2.connect(
             host="localhost",
             port="5432",
@@ -15,24 +15,24 @@ def fetch_all_data():
 
         cursor = connection.cursor()
 
-        # SQL-запрос для выборки всех данных
+        # SQL-query to select all data
         fetch_query = "SELECT * FROM issues;"
         cursor.execute(fetch_query)
 
-        # Получение и вывод всех строк
+        # Fetch and print all rows
         rows = cursor.fetchall()
         for row in rows:
             print(row)
 
     except (Exception, psycopg2.Error) as error:
-        print("Ошибка при подключении к PostgreSQL", error)
+        print("Error connecting to PostgreSQL", error)
     finally:
-        # Закрытие соединения
+        # Close the connection
         if connection:
             cursor.close()
             connection.close()
-            print("Соединение с PostgreSQL закрыто")
+            print("PostgreSQL connection closed")
 
 
-# Вызов функции
+# Call the function
 fetch_all_data()

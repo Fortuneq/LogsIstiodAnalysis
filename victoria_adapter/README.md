@@ -1,9 +1,9 @@
-Для работы:
+To run:
 
-1. Запустить докер-контейнер с Victoria metrics.
+1. Start the log storage Docker container (Grafana Loki).
    docker run -d -p 3100:3100 grafana/loki:latest
 
-2. Для удобства и тестирования для закачки данных в V.M будем использовать python-script и библиотеку requests.
+2. For convenience and testing, upload data with a Python script using the requests library.
    python data_creator.py
 
-3. Правильно выставить временную метку в scheduler, которая соответствует данным в логах.
+3. Set the timestamp in the scheduler correctly so that it matches the data in the logs.

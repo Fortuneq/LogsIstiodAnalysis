@@ -16,7 +16,7 @@ class LogAnalyzer:
         self.scaler = MinMaxScaler()
         self.scaler.fit(self.log_library)
 
-    # Эта функция нужна для добавления issue в библиотеку. Версия для поставки не подразумевает ее наличие
+    # This function adds an issue to the library. The production version is not expected to include it
     def add_issue(self, issue_file, reason):
         issue = self.log_parser.parse_logs(issue_file)
         self.log_library = self.log_library.append(issue, ignore_index=True)

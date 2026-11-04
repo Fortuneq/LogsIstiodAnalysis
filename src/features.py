@@ -1,7 +1,7 @@
 import re
 
-# Каждая фича, должна сопровождаться timestamp, для дальнейшнего анализа
-# Бинарные фичи - смотрим по регулярке наличие в строчке. При наличии - 1, иначе 0.
+# Every feature must come with a timestamp for further analysis
+# Binary features: check with a regex whether the line contains the pattern. 1 if present, otherwise 0.
 binary_features = [
     # Existing features
     {"Feature_name": "Context_error", "RegEx": r"Canceled desc = context canceled"},
@@ -55,7 +55,7 @@ binary_features = [
         "Feature_name": "API_Server_Communication_Error",
         "RegEx": r"API server communication error|failed to communicate with API server",
     }
-    # Добавьте по аналогии другие бинарные фичи, которые вам необходимы
+    # Add any other binary features you need in the same way
 ]
 
 numerical_features = [
@@ -70,5 +70,5 @@ numerical_features = [
     {"Feature_name": "LDS_Listeners", "RegEx": r"LDS.*node:.+?listeners:(\d+)"},
     # RDS features
     {"Feature_name": "RDS_Routes", "RegEx": r"RDS.*node:.+?routes:(\d+)"},
-    # Объединенные данные из логов IstioD
+    # Combined data from the logs IstioD
 ]

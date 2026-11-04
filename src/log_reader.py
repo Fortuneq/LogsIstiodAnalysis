@@ -23,12 +23,12 @@ class LogReader:
         if response.status_code == 200:
             return response.json()
         else:
-            print(f"Ошибка при запросе логов: {response.status_code} - {response.text}")
+            print(f"Error fetching logs: {response.status_code} - {response.text}")
             return None
 
     def fetch_logs_last_5_minutes(self):
-        end_time = self.get_unix_epoch_time_in_ns(0)  # Текущее время
-        start_time = self.get_unix_epoch_time_in_ns(1)  # 5 минут назад
+        end_time = self.get_unix_epoch_time_in_ns(0)  # Current time
+        start_time = self.get_unix_epoch_time_in_ns(1)  # 5 minutes ago
         return self.get_logs_from_loki(start_time, end_time)
 
     def get_logs(self):

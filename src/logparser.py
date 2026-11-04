@@ -15,13 +15,13 @@ class IstioLogParser:
         numerical_results = {
             feature["Feature_name"]: 0 for feature in self.numerical_features
         }
-        # Обработка бинарных признаков
+        # Process binary features
         for feature in self.binary_features:
             match = re.search(feature["RegEx"], line)
             if match:
                 binary_results[feature["Feature_name"]] = 1
 
-        # Обработка числовых признаков
+        # Process numerical features
         for feature in self.numerical_features:
             match = re.search(feature["RegEx"], line)
             if match:
@@ -34,25 +34,25 @@ class IstioLogParser:
                         )
                     except ValueError:
                         print(
-                            f"Ошибка преобразования: {match.group(1)} не является числом"
+                            f"Conversion error: {match.group(1)} is not a number"
                         )
-                        continue  # Пропускаем добавление этого признака
+                        continue  # Skip adding this feature
 
         return binary_results, numerical_results
 
     def parse_logs(self, log_lines):
         aggregated_binary_results = defaultdict(int)
         aggregated_numerical_results = defaultdict(float)
-        feature_line_indices = defaultdict(list)  # Словарь для хранения индексов строк
+        feature_line_indices = defaultdict(list)  # Dictionary for storing line indexes
 
         cnt = 0
         for idx, line in enumerate(log_lines):
             binary_results, numerical_results = self.parse_line(line)
 
-            # Агрегация бинарных и числовых признаков
+            # Aggregate binary and numerical features
             for feature, value in binary_results.items():
                 aggregated_binary_results[feature] += value
-                if value:  # Если признак активен, сохраняем индекс строки
+                if value:  # If the feature is active, save the line index
                     feature_line_indices[feature].append(idx)
 
             for feature, value in numerical_results.items():
@@ -60,7 +60,7 @@ class IstioLogParser:
 
             cnt += 1
 
-        # Сохраняем строки с активированными признаками в файл
+        # Save lines with active features to a file
         self.save_feature_lines_to_file(log_lines, feature_line_indices)
 
         results = {

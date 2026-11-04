@@ -9,7 +9,7 @@ def get_logs_from_loki(loki_url, query, start_time, end_time, limit=1000):
     if response.status_code == 200:
         return response.json()
     else:
-        print(f"Ошибка при запросе логов: {response.status_code} - {response.text}")
+        print(f"Error fetching logs: {response.status_code} - {response.text}")
         return None
 
 
@@ -20,11 +20,11 @@ def get_unix_epoch_time_in_ns(minutes_ago):
 loki_url = "http://localhost:3100/loki/api/v1/query_range"
 query = '{job="your_job_name"}'
 
-# Временные рамки: последние 5 минут
+# Time window: the last 5 minutes
 end_time = get_unix_epoch_time_in_ns(0)
 start_time = get_unix_epoch_time_in_ns(5)
 
-# Получение логов
+# Fetch logs
 logs = get_logs_from_loki(loki_url, query, start_time, end_time)
 log_stream = ""
 if logs:

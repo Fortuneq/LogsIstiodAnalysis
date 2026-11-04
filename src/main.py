@@ -1,7 +1,7 @@
 from manager import LogProcessingManager
 
-# TO-DO отдельно создавать компоненты manager'a
-# Композиция -> аггрегация
+# TO-DO create the components separately manager'a
+# Composition -> aggregation
 
 loki_url = "http://localhost:3100/loki/api/v1/query_range"
 query = '{job="your_job_name"}'

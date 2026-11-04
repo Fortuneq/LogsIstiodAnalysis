@@ -1,7 +1,7 @@
-Для работы:
+To run:
 
-1. Запустить контейнер с postgres
+1. Start the postgres container
 
-2. Запустить db_creator(если первый раз)
+2. Run db_creator (first time only)
 
-3. Запустить server
+3. Run server
